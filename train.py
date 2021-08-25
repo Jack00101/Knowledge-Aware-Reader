@@ -65,8 +65,8 @@ def train(cfg):
     model.train()
     best_val_f1 = 0
     best_val_hits = 0
-    if not os.path.exists('model/{}/{}_best.pt'.format(cfg['name'], cfg['model_id'])):
-        os.makedirs('model/{}/{}_best.pt'.format(cfg['name'], cfg['model_id']))
+    if not os.path.exists('model/{}/'.format(cfg['name'])):
+        os.makedirs('model/{}/'.format(cfg['name']))
     for epoch in range(cfg['num_epoch']):
         batcher = train_data.batcher(shuffle=True)
         train_loss = []
