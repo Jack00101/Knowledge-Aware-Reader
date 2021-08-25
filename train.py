@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 import random
+import os
 
 from data_generator import DataLoader
 from model import KAReader
@@ -64,6 +65,8 @@ def train(cfg):
     model.train()
     best_val_f1 = 0
     best_val_hits = 0
+    if not os.path.exists('model/{}/{}_best.pt'.format(cfg['name'], cfg['model_id'])):
+        os.makedirs('model/{}/{}_best.pt'.format(cfg['name'], cfg['model_id']))
     for epoch in range(cfg['num_epoch']):
         batcher = train_data.batcher(shuffle=True)
         train_loss = []
